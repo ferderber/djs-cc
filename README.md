@@ -1,5 +1,6 @@
 # djs-cc
 
+[![npm Version](https://img.shields.io/npm/v/djs-cc.svg)](https://www.npmjs.com/package/djs-cc)
 [![Build Status](https://travis-ci.org/matthewferderber/djs-cc.svg?branch=master)](https://travis-ci.org/matthewferderber/djs-cc)
 [![Test Coverage](https://codeclimate.com/github/matthewferderber/djs-cc/badges/coverage.svg)](https://codeclimate.com/github/matthewferderber/djs-cc)
 
