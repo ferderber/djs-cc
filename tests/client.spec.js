@@ -1,5 +1,5 @@
 const Client = require('../src/client');
-const SampleCommand = require('./commands/SampleCommand');
+const SampleCommand = require('./commands/sampleCommand');
 const config = require('./sample-config');
 const bot = new Client();
 class ErrorCommand extends SampleCommand {
