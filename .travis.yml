@@ -11,3 +11,11 @@ cache:
 
 script:
   - npm run test:coverage
+
+addons:
+  code_climate:
+    repo_token: 0429f633d10c2ecea33053284d1863b17a125e63a03c2a09528fa3c4caf2e122
+
+after_success:
+  - npm install -g codeclimate-test-reporter
+  - codeclimate-test-reporter < ./coverage/lcov.info
