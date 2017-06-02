@@ -1,5 +1,5 @@
 var config = {
-    "storage": "../test.db",
+    "storage": "./test.db",
     "provider": "sqlite",
     "host": "localhost",
     "db_name": "bot", //Not used for sqlite
