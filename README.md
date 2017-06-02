@@ -1,5 +1,7 @@
 # djs-cc
 
+[![Build Status](https://travis-ci.org/matthewferderber/djs-cc.svg?branch=master)](https://travis-ci.org/matthewferderber/djs-cc)
+
 **djs-cc (discord.js-commandclient)** is a typescript library for discord.js that adds simple command creation and configuration storing capabilities.
 
 The idea for this project came after using many different command frameworks and wanting a simpler method of displaying command results and errors. I wanted to try making my own version partially as a learning experience but also to change and add features I wanted for future projects.
