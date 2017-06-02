@@ -6,3 +6,4 @@ build
 .DS_STORE
 *.db
 coverage
+*.tgz
