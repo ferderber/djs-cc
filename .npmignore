@@ -1,0 +1,8 @@
+src/
+tests/
+.eslintrc.json
+node_modules/
+.vscode
+.settings/
+tslint.json
+*.db
