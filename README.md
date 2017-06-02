@@ -1,6 +1,7 @@
 # djs-cc
 
 [![Build Status](https://travis-ci.org/matthewferderber/djs-cc.svg?branch=master)](https://travis-ci.org/matthewferderber/djs-cc)
+[![Test Coverage](https://codeclimate.com/github/matthewferderber/djs-cc/badges/coverage.svg)](https://codeclimate.com/github/matthewferderber/djs-cc)
 
 **djs-cc (discord.js-commandclient)** is a typescript library for discord.js that adds simple command creation and configuration storing capabilities.
 
