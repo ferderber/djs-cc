@@ -38,8 +38,10 @@ const ArgumentType = CommandClient.ArgumentType;
 
 class SampleCommand extends Command {
     constructor() {
-        super('test', 'A test command', '!test',
-            [new Argument('sampleArg', ArgumentType.Integer, true)]);
+        super({
+            name: 'test', description: 'A test command', usage: '!test',
+            args: [new Argument({ name: 'sampleArg', type: ArgumentType.Integer, required: true })]
+        });
     }
     async run(msg, args) {
         await msg.reply(`argument sampleArg was: ${args.get('sampleArg')}`);
