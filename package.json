@@ -13,9 +13,13 @@
   },
   "jest": {
     "transform": {
-      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      ".ts$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
+    "mapCoverage": true,
     "testRegex": "(/tests/.*(\\.|/)(test|spec))\\.jsx?$",
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/tests"
+    ],
     "moduleFileExtensions": [
       "ts",
       "tsx",
