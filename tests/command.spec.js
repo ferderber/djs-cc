@@ -3,9 +3,9 @@ const Argument = require('../src/argument');
 const ArgumentType = require('../src/argumentType');
 const Collection = require('discord.js').Collection;
 const cmd = new SampleCommand();
-const arg1 = new Argument('str', ArgumentType.String, true);
-const arg2 = new Argument('num', ArgumentType.Integer, false);
-const arg3 = new Argument('user', ArgumentType.User, true);
+const arg1 = new Argument({name: 'str', type: ArgumentType.String, required:true});
+const arg2 = new Argument({name:'num', type:ArgumentType.Integer, required:false});
+const arg3 = new Argument({name:'user', type:ArgumentType.User, required:true});
 let message;
 beforeEach(() => {
     cmd.args = [];

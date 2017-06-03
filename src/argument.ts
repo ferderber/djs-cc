@@ -1,15 +1,17 @@
 import { isNumber } from 'util';
 import { Message, GuildMember } from 'discord.js';
+import ArgumentOptions = require('./argumentOptions');
 import ArgumentType = require('./argumentType');
 class Argument {
     name: string;
     type: ArgumentType;
     required: boolean;
-    defaultValue: any;
-    constructor(name: string, type: ArgumentType, required: boolean) {
-        this.name = name;
-        this.type = type;
-        this.required = required;
+    default: any;
+    constructor(options: ArgumentOptions) {
+        this.name = options.name;
+        this.type = options.type;
+        this.required = options.required;
+        this.default = options.default;
     }
     private isNumber(str: string) : boolean {
         let number = parseFloat(str);

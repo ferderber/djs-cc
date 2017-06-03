@@ -1,22 +1,25 @@
 import { Message, Role } from 'discord.js';
 import Argument = require('./argument');
+import CommandOptions = require('./commandOptions');
 
 abstract class Command {
     name: string;
+    aliases: string[] = [];
     description: string;
     usage: string;
     args: Argument[] = [];
     requiredRole: Role;
-    constructor(name?: string, description?: string, usage?: string, args?: Argument[]) {
-        this.name = name;
-        this.description = description;
-        this.usage = usage;
-        this.args = args;
+    constructor(options: CommandOptions) {
+        this.name = options.name;
+        this.aliases = options.aliases;
+        this.args = options.args;
+        this.description = options.description;
+        this.usage = options.usage;
     }
     parseArgs(message: Message): Map<string, Argument> {
         let userArgs = message.content.split(' ').splice(1);
         var argMap = new Map<string, Argument>();
-        if(this.args.length === 0 && userArgs.length > 0) {
+        if (this.args.length === 0 && userArgs.length > 0) {
             throw new Error(`\`${this.name}\` does not have any arguments`);
         }
         for (let i = 0; i < this.args.length; i++) {
