@@ -1,5 +1,6 @@
-const Client = require('../src/client');
-const SampleCommand = require('./commands/sampleCommand');
+const Client = require('../src/Client');
+const SampleCommand = require('./commands/SampleCommand');
+const SqlProvider = require('../src/providers/SqlProvider');
 const config = require('./sample-config');
 const bot = new Client();
 class ErrorCommand extends SampleCommand {
@@ -59,6 +60,11 @@ test('command that throws error', async (done) => {
     fakeMsg.content = "!test";
     fakeMsg.reply = reply('An error occured: sample text', done);
     await bot.onMessage(fakeMsg);
+});
+
+test('registerProvider registers to settings property', () => {
+    bot.registerProvider(config);
+    expect(bot.settings).toEqual(new SqlProvider(config));
 });
 
 afterAll(async (done) => {

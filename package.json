@@ -5,10 +5,12 @@
   "main": "build/index.js",
   "typings": "build/index",
   "scripts": {
-    "start": "npm run build && node build/index.js",
+    "start": "npm run build && node index.js",
+    "start:dev": "nodemon -e ts -w ./src -x npm run start",
     "build": "tsc",
     "prepublishOnly": "npm run build",
     "test": "jest",
+    "docs": "typedoc --out ./docs --exclude index",
     "test:coverage": "jest --coverage"
   },
   "jest": {
@@ -55,8 +57,10 @@
     "@types/node": "^7.0.27",
     "eslint": "^3.19.0",
     "jest": "^20.0.4",
+    "nodemon": "^1.11.0",
     "ts-jest": "^20.0.4",
     "tslint": "^5.4.2",
+    "typedoc": "^0.7.1",
     "typescript": "^2.3.3"
   },
   "eslintConfig": {

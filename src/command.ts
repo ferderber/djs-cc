@@ -1,6 +1,7 @@
-import { Message, Role } from 'discord.js';
-import Argument = require('./argument');
-import CommandOptions = require('./commandOptions');
+import { Role } from 'discord.js';
+import Message = require('./Message');
+import Argument = require('./Argument');
+import CommandOptions = require('./CommandOptions');
 
 abstract class Command {
     name: string;
@@ -16,9 +17,17 @@ abstract class Command {
         this.description = options.description;
         this.usage = options.usage;
     }
+    /**
+     * Extracts a commands arguments from a message
+     * @param message Message that invoked the command
+     * @returns Map of the found arguments
+     */
     parseArgs(message: Message): Map<string, Argument> {
         let userArgs = message.content.split(' ').splice(1);
         var argMap = new Map<string, Argument>();
+        if (!this.args) {
+            return argMap;
+        }
         if (this.args.length === 0 && userArgs.length > 0) {
             throw new Error(`\`${this.name}\` does not have any arguments`);
         }
@@ -42,7 +51,18 @@ abstract class Command {
         }
         return argMap;
     }
-    public abstract hasPermission(msg: Message): boolean
+    /**
+     * @param msg Message that invoked the command
+     * @returns Whether the user who wrote the message has permission (default: true)
+     */
+    public hasPermission(msg: Message): boolean {
+        return true; //Default to true
+    }
+    /**
+     * Main function run when a command is executed
+     * @param msg Message that invoked the command
+     * @param args Arguments extracted from the message
+     */
     abstract run(msg: Message, args: Map<string, any>): Promise<any>
 }
 export = Command;

@@ -1,6 +1,9 @@
-import Argument = require('./argument');
+import Argument = require('./Argument');
 import { Role } from 'discord.js';
 
+/**
+ * Options interface used to construct a command
+ */
 interface CommandOptions {
     name: string;
     aliases?: string[];

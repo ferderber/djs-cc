@@ -1,6 +1,6 @@
-const SQLProvider = require('../src/providers/sqlProvider');
-const Client = require('../src/client');
-const Provider = require('../src/providers/provider');
+const SQLProvider = require('../src/providers/SqlProvider');
+const Client = require('../src/Client');
+const Provider = require('../src/providers/Provider');
 const config = require('./sample-config');
 const defaultGuild = '125385898593484800';
 let sqlClient;

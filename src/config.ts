@@ -1,3 +1,6 @@
+/**
+ * Interface for client config files
+ */
 interface Config {
     db_name: string,
     host: string | 'localhost',

@@ -1,5 +1,5 @@
 import { Column, Entity, PrimaryColumn, OneToMany } from 'typeorm';
-import { Setting } from './setting';
+import { Setting } from './Setting';
 
 @Entity('guild')
 export class Guild {

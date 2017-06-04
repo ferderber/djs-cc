@@ -1,7 +1,7 @@
-import { isNumber } from 'util';
-import { Message, GuildMember } from 'discord.js';
-import ArgumentOptions = require('./argumentOptions');
-import ArgumentType = require('./argumentType');
+import { GuildMember } from 'discord.js';
+import Message = require('./Message');
+import ArgumentOptions = require('./ArgumentOptions');
+import ArgumentType = require('./ArgumentType');
 class Argument {
     name: string;
     type: ArgumentType;
@@ -13,13 +13,26 @@ class Argument {
         this.required = options.required;
         this.default = options.default;
     }
+    /**
+     * Checks if a the argument is a number
+     * @param str
+     */
     private isNumber(str: string) : boolean {
         let number = parseFloat(str);
         return !isNaN(number) && isFinite(number);
     }
+    /**
+     * Gets the user Id from a mention string
+     * @param mention A mention string (<@userId>)
+     */
     private getIdFromMention(mention: string) : string {
         return mention.substring(mention.indexOf('@') + 1, mention.indexOf('>'));
     }
+    /**
+     * Retrieves argument value from current argument string
+     * @param str Current argument value to parse
+     * @param message Message that invoked the command
+     */
     parseArg(str: string, message: Message): any {
         switch (this.type) {
             case ArgumentType.Integer:

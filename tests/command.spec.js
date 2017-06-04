@@ -1,6 +1,7 @@
-const SampleCommand = require('./commands/sampleCommand');
-const Argument = require('../src/argument');
-const ArgumentType = require('../src/argumentType');
+const SampleCommand = require('./commands/SampleCommand');
+const Command = require('../src/Command');
+const Argument = require('../src/Argument');
+const ArgumentType = require('../src/ArgumentType');
 const Collection = require('discord.js').Collection;
 const cmd = new SampleCommand();
 const arg1 = new Argument({name: 'str', type: ArgumentType.String, required:true});
@@ -43,6 +44,10 @@ test('ParseArgs: two arguments (required, not required)', async () => {
     expect(cmd.parseArgs(message)).toEqual(new Map([['str', 'strValue']]));
     message.content = message.content + " 500";
     expect(cmd.parseArgs(message)).toEqual(new Map([['str', 'strValue'], ['num', 500]]));
+});
+
+test('Default hasPermissions is true', () => {
+    expect(new Command({}).hasPermission()).toEqual(true);
 });
 
 test('ParseArgs: two arguments (required, required)', async () => {

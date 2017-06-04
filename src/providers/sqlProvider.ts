@@ -1,9 +1,9 @@
 import "reflect-metadata";
 import { Connection, ConnectionOptions, createConnection, FindOptions, ObjectLiteral } from 'typeorm';
-import Provider = require('./provider');
-import Config = require('../config');
-import { Guild } from './models/guild';
-import { Setting } from './models/setting';
+import Provider = require('./Provider');
+import Config = require('../Config');
+import { Guild } from './models/Guild';
+import { Setting } from './models/Setting';
 class SQLProvider implements Provider {
     db: Connection;
     options: ConnectionOptions;
@@ -27,6 +27,11 @@ class SQLProvider implements Provider {
     async setup() {
         this.db = await createConnection(this.options).catch(err => { console.error(err); throw err; });
     }
+    /**
+     * Retrieves the settings value of a property
+     * @param property Key value to get
+     * @param guildId Guild to retrieve the setting from
+     */
     async get(property: string, guildId: string): Promise<string> {
         let setting = await this.db.getRepository(Setting).createQueryBuilder('setting')
             .where('setting.guild=:guild', { guild: guildId })
@@ -36,7 +41,11 @@ class SQLProvider implements Provider {
             return setting.value;
         }
     }
-    async getAll(guildId: string): Promise<any[]> {
+    /**
+     * Retrieves all settings for a guild
+     * @param guildId
+     */
+    async getAll(guildId: string): Promise<Setting[]> {
         let guild = (await this.db.getRepository(Guild).findOneById(guildId, { alias: 'guild', innerJoinAndSelect: { settings: 'guild.settings' } }));
         if (guild && guild.settings) {
             return guild.settings;
@@ -45,18 +54,33 @@ class SQLProvider implements Provider {
             return [];
         }
     }
+    /**
+     * Removes a setting from a guild
+     * @param property Key value of the setting to be removed
+     * @param guildId Id of the guild to remove from
+     */
     async delete(property: string, guildId: string): Promise<any> {
         let guild = await this.db.getRepository(Guild).findOneById(guildId, { alias: 'guild', innerJoinAndSelect: { settings: 'guild.settings' } });
         if (guild) {
             return await this.db.getRepository(Setting).remove(guild.settings.find(setting => setting.property === property));
         }
     }
+    /**
+     * Deletes all settings from a guild
+     * @param guildId Id of the guild to remove from
+     */
     async deleteAll(guildId: string): Promise<any> {
         let guild = await this.db.getRepository(Guild).findOneById(guildId, { alias: 'guild', innerJoinAndSelect: { settings: 'guild.settings' } });
         if (guild) {
             return await this.db.getRepository(Setting).remove(guild.settings);
         }
     }
+    /**
+     * Creates/Modifies a guild setting
+     * @param property Key value to set
+     * @param value
+     * @param guildId Id of the guild to add a setting to
+     */
     async set(property: string, value: string, guildId: string) {
         let guild = await this.db.getRepository(Guild).findOneById(guildId, { alias: 'guild', innerJoinAndSelect: { settings: 'guild.settings' } });
         if (!guild) {

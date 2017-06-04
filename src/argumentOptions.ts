@@ -1,5 +1,7 @@
-import ArgumentType = require('./argumentType');
-
+import ArgumentType = require('./ArgumentType');
+/**
+ * Options interface used to construct an argument
+ */
 interface ArgumentOptions {
     name: string;
     type?: ArgumentType;
