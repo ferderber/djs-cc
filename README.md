@@ -15,6 +15,7 @@ The idea for this project came after using many different command frameworks and
 ## Features
 
 - Class based commands
+- Typescript!
 - `async/await` support
 - Simple argument parsing
 - Error handling
@@ -39,8 +40,15 @@ const ArgumentType = CommandClient.ArgumentType;
 class SampleCommand extends Command {
     constructor() {
         super({
-            name: 'test', description: 'A test command', usage: '!test',
-            args: [new Argument({ name: 'sampleArg', type: ArgumentType.Integer, required: true })]
+            name: 'test',
+            description: 'A test command',
+            usage: '!test',
+            args: [
+                new Argument({
+                        name: 'sampleArg',
+                        type: ArgumentType.Integer,
+                        required: true
+                })]
         });
     }
     async run(msg, args) {
