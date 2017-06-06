@@ -17,16 +17,18 @@ class Argument {
      * Checks if a the argument is a number
      * @param str
      */
-    private isNumber(str: string) : boolean {
+    private isNumber(str: string): boolean {
         let number = parseFloat(str);
         return !isNaN(number) && isFinite(number);
     }
     /**
      * Gets the user Id from a mention string
-     * @param mention A mention string (<@userId>)
+     * @param mention A mention string (<@userId> or <@!userId>)
      */
-    private getIdFromMention(mention: string) : string {
-        return mention.substring(mention.indexOf('@') + 1, mention.indexOf('>'));
+    private getIdFromMention(mention: string): string {
+        let nickMention = mention.indexOf('@!');
+        let userMention = mention.indexOf('@');
+        return mention.substring((nickMention !== -1 ? nickMention + 2 : userMention + 1), mention.indexOf('>'));
     }
     /**
      * Retrieves argument value from current argument string
@@ -54,7 +56,7 @@ class Argument {
             case ArgumentType.User:
                 let userStr = str;
                 let id;
-                if (userStr.match(/^<@\d+>$/)) {
+                if (userStr.match(/^<@!?\d+>$/)) {
                     let guildMember = message.guild.members.get(this.getIdFromMention(userStr));
                     if (guildMember) {
                         return guildMember.user;
