@@ -1,10 +1,12 @@
 /**
  * Exports the default commands
  */
-import HelpCommand from "./help";
-import StatusCommand from "./status";
+import HelpCommand = require("./help");
+import StatusCommand = require("./status");
+import PingCommand = require('./ping');
 
 export =[
     HelpCommand,
-    StatusCommand
+    StatusCommand,
+    PingCommand
 ];

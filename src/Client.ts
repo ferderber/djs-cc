@@ -5,6 +5,7 @@ import SQLProvider = require('./providers/SqlProvider');
 import Command = require('./Command');
 import Message = require('./Message');
 import defaultCommands = require('./commands');
+import { getCommandsFromDirectory } from './_helpers';
 class Client extends Discord.Client {
     commands: Map<string, Command> = new Map();
     prefix: string = '!';
@@ -63,6 +64,15 @@ class Client extends Discord.Client {
             this.commands.set(cmdInstance.name, cmdInstance);
         });
     }
+
+    /**
+     * Registers all commands within the given directory
+     * @param path Path to the directory containing commands
+     */
+    async registerCommandFromDir(path: string) {
+        this.registerCommands(await getCommandsFromDirectory(path));
+    }
+
     /**
      * Removes a command from the bots command Map
      * @param cmd Instance of a command

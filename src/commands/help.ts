@@ -3,7 +3,7 @@ import Argument = require('../argument');
 import Message = require('../Message');
 import Discord = require('discord.js');
 
-export default class HelpCommand extends Command {
+class HelpCommand extends Command {
     constructor() {
         super({
             name: 'help',
@@ -18,8 +18,9 @@ export default class HelpCommand extends Command {
         embed.setTitle('Help Command');
         commands.forEach((cmd) =>
             embed.addField(`${cmd.name}:\u2001(${msg.client.prefix}${cmd.usage ? cmd.usage : cmd.name})`,
-                cmd.description)
-        );
+                cmd.description));
         msg.channel.send({ embed });
     }
 }
+
+export = HelpCommand;

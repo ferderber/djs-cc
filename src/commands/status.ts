@@ -2,7 +2,7 @@ import Command = require('../Command');
 import Argument = require('../argument');
 import Message = require('../Message');
 
-export default class StatusCommand extends Command {
+class StatusCommand extends Command {
     constructor() {
         super({
             name: 'status',
@@ -15,3 +15,5 @@ export default class StatusCommand extends Command {
     }
 
 }
+
+export = StatusCommand;
