@@ -26,9 +26,12 @@ class Argument {
      * @param mention A mention string (<@userId> or <@!userId>)
      */
     private getIdFromMention(mention: string): string {
-        let nickMention = mention.indexOf('@!');
-        let userMention = mention.indexOf('@');
-        return mention.substring((nickMention !== -1 ? nickMention + 2 : userMention + 1), mention.indexOf('>'));
+        let result = mention.match(/^<@!?(\d+)>$/);
+        //if there is a match, return the first capture group (the id)
+        if (result)
+            return result[1];
+        else
+            return null;
     }
     /**
      * Retrieves argument value from current argument string
@@ -55,9 +58,9 @@ class Argument {
                 return str;
             case ArgumentType.User:
                 let userStr = str;
-                let id;
-                if (userStr.match(/^<@!?\d+>$/)) {
-                    let guildMember = message.guild.members.get(this.getIdFromMention(userStr));
+                let id = this.getIdFromMention(str);
+                if (id) {
+                    let guildMember = message.guild.members.get(id);
                     if (guildMember) {
                         return guildMember.user;
                     } else {
