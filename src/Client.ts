@@ -69,8 +69,12 @@ class Client extends Discord.Client {
      * Registers all commands within the given directory
      * @param path Path to the directory containing commands
      */
-    async registerCommandFromDir(path: string) {
-        this.registerCommands(await getCommandsFromDirectory(path));
+    async registerCommandDirectory(path: string) {
+        try {
+            this.registerCommands(await getCommandsFromDirectory(path));
+        } catch (err) {
+            console.error('An error occured while loading commands from a directory:' + err);
+        }
     }
 
     /**

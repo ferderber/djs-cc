@@ -39,12 +39,8 @@ async function findCommands(p: string): Promise<string[]> {
     });
 }
 export async function getCommandsFromDirectory(p: string): Promise<any[]> {
-    try {
-        p = path.resolve(process.cwd(), p);
-        const files = await findCommands(p);
-        return loadCommands(files);
-    } catch (err) {
-        console.log(err);
-    }
+    p = path.resolve(process.cwd(), p);
+    const files = await findCommands(p);
+    return loadCommands(files);
 }
 

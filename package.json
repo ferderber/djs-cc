@@ -15,17 +15,18 @@
   },
   "jest": {
     "transform": {
-      ".ts$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+      ".(ts|tsx)": "<rootDir>/node_modules/ts-jest/preprocessor.js"
     },
     "mapCoverage": true,
     "testRegex": "(/tests/.*(\\.|/)(test|spec))\\.jsx?$",
     "coveragePathIgnorePatterns": [
-      "<rootDir>/tests"
+      "<rootDir>/tests",
+      "<rootDir>/src/commands"
     ],
     "moduleFileExtensions": [
       "ts",
-      "tsx",
       "js",
+      "tsx",
       "json"
     ]
   },

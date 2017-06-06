@@ -3,6 +3,7 @@ const SampleCommand = require('./commands/SampleCommand');
 const SqlProvider = require('../src/providers/SqlProvider');
 const config = require('./sample-config');
 const bot = new Client();
+const numDefaultCommands = bot.commands.size;
 class ErrorCommand extends SampleCommand {
     constructor() {
         super();
@@ -65,6 +66,21 @@ test('command that throws error', async (done) => {
 test('registerProvider registers to settings property', () => {
     bot.registerProvider(config);
     expect(bot.settings).toEqual(new SqlProvider(config));
+});
+
+test('registerCommandDirectory', async (done) => {
+    bot.unregisterCommand(new SampleCommand());
+    await bot.registerCommandDirectory(__dirname + '/commands');
+    fakeMsg.author.username = 'Cobalt';
+    fakeMsg.content = "!test 500";
+    fakeMsg.reply = reply('argument sampleArg was: 500', done);
+    await bot.onMessage(fakeMsg);
+});
+
+test('registerCommandDirectory', async () => {
+    bot.unregisterCommand(new SampleCommand());
+    await bot.registerCommandDirectory('fakePath');
+    expect(bot.commands.size).toEqual(numDefaultCommands);
 });
 
 afterAll(async (done) => {

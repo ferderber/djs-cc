@@ -12,8 +12,8 @@ abstract class Command {
     requiredRole: Role;
     constructor(options: CommandOptions) {
         this.name = options.name;
-        this.aliases = options.aliases;
-        this.args = options.args;
+        this.aliases = options.aliases ? options.aliases : this.aliases;
+        this.args = options.args ? options.args : this.args;
         this.description = options.description;
         this.usage = options.usage;
     }
@@ -25,9 +25,6 @@ abstract class Command {
     parseArgs(message: Message): Map<string, Argument> {
         let userArgs = message.content.split(' ').splice(1);
         var argMap = new Map<string, Argument>();
-        if (!this.args) {
-            return argMap;
-        }
         if (this.args.length === 0 && userArgs.length > 0) {
             throw new Error(`\`${this.name}\` does not have any arguments`);
         }
