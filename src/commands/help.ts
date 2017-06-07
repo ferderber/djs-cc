@@ -1,5 +1,5 @@
 import Command = require('../Command');
-import Argument = require('../argument');
+import Argument = require('../Argument');
 import Message = require('../Message');
 import Discord = require('discord.js');
 

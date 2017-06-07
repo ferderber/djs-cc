@@ -1,5 +1,5 @@
 import Command = require('../Command');
-import Argument = require('../argument');
+import Argument = require('../Argument');
 import Message = require('../Message');
 
 class StatusCommand extends Command {
