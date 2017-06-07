@@ -53,6 +53,9 @@ class Client extends Discord.Client {
      */
     registerCommand(cmd: Command) {
         this.commands.set(cmd.name, cmd);
+        if (cmd.aliases) {
+            cmd.aliases.forEach((alias) => this.commands.set(alias, cmd));
+        }
     }
     /**
      * Registers an array of command classes as commands.
@@ -62,6 +65,9 @@ class Client extends Discord.Client {
         cmds.forEach(cmd => {
             let cmdInstance = new cmd();
             this.commands.set(cmdInstance.name, cmdInstance);
+            if (cmdInstance.aliases) {
+                cmdInstance.aliases.forEach((alias) => this.commands.set(alias, cmdInstance));
+            }
         });
     }
 
