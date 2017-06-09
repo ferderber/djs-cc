@@ -1,6 +1,18 @@
 import fs = require('fs');
 import path = require('path');
 import Command = require('./Command');
+var padCache = [
+    '',
+    ' ',
+    '  ',
+    '   ',
+    '    ',
+    '     ',
+    '      ',
+    '       ',
+    '        ',
+    '         '
+];
 
 function loadCommands(files: string[]): any[] {
     let cmds = [];
@@ -23,8 +35,9 @@ async function findCommands(p: string): Promise<string[]> {
         fs.lstat(p, (err, stats) => {
             if (!err && stats.isDirectory()) {
                 fs.readdir(p, (err, files) => {
-                    if (err)
+                    if (err) {
                         reject(err);
+                    }
                     var paths = [];
                     for (var i = 0; i < files.length; i++) {
                         paths.push(path.join(p, files[i]));
@@ -38,6 +51,36 @@ async function findCommands(p: string): Promise<string[]> {
         });
     });
 }
+
+export function rightPad(str: string, len: number, ch = ' '): string {
+    len = len - str.length;
+
+    if (len <= 0) {
+        return str;
+    }
+
+    // use cache if common use case
+    if (ch === ' ' && len < 10) {
+        return str + padCache[len];
+    }
+
+    var pad = '';
+    while (true) {
+        if (len & 1) {
+            pad += ch;
+        }
+        len >>= 1;
+        if (len) {
+            ch += ch;
+        }
+        else {
+            break;
+        }
+    }
+
+    return str + pad;
+}
+
 export async function getCommandsFromDirectory(p: string): Promise<any[]> {
     p = path.resolve(process.cwd(), p);
     const files = await findCommands(p);
