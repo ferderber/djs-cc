@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryColumn, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
+import { Column, Entity, PrimaryGeneratedColumn, ManyToOne } from 'typeorm';
 import { Guild } from './Guild';
 
 @Entity('setting')
@@ -6,7 +6,7 @@ export class Setting {
     @PrimaryGeneratedColumn()
     id: number;
 
-    @Column() 
+    @Column()
     property: string
 
     @Column()

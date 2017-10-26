@@ -5,7 +5,7 @@ import HelpCommand = require("./help");
 import StatusCommand = require("./status");
 import PingCommand = require('./ping');
 
-export =[
+export = [
     HelpCommand,
     StatusCommand,
     PingCommand

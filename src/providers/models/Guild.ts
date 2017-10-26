@@ -1,4 +1,4 @@
-import { Column, Entity, PrimaryColumn, OneToMany } from 'typeorm';
+import { Entity, PrimaryColumn, OneToMany } from 'typeorm';
 import { Setting } from './Setting';
 
 @Entity('guild')
