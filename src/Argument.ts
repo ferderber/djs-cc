@@ -1,8 +1,11 @@
 import { GuildMember } from 'discord.js';
-import Message = require('./Message');
-import ArgumentOptions = require('./ArgumentOptions');
-import ArgumentType = require('./ArgumentType');
-class Argument {
+import { Message } from './Message';
+import { ArgumentOptions } from './ArgumentOptions';
+import { ArgumentType } from './ArgumentType';
+
+export { ArgumentType };
+
+export class Argument {
     name: string;
     type: ArgumentType;
     required: boolean;
@@ -28,10 +31,12 @@ class Argument {
     private getIdFromMention(mention: string): string {
         let result = mention.match(/^<@!?(\d+)>$/);
         //if there is a match, return the first capture group (the id)
-        if (result)
+        if (result) {
             return result[1];
-        else
+        }
+        else {
             return null;
+        }
     }
     /**
      * Retrieves argument value from current argument string
@@ -40,24 +45,23 @@ class Argument {
      */
     parseArg(str: string, message: Message): any {
         switch (this.type) {
-            case ArgumentType.Integer:
+            case 'Integer' || 'integer':
                 if (this.isNumber(str)) {
                     return Number.parseInt(str);
                 }
                 else {
                     throw new Error(`Converting provided argument (\`${str}\`) \`${this.name}\` to Integer`);
                 }
-            case ArgumentType.Float:
+            case 'Float' || 'float':
                 if (this.isNumber(str)) {
                     return Number.parseFloat(str);
                 }
                 else {
                     throw new Error(`Converting provided argument (\`${str}\`) \`${this.name}\` to Float`);
                 }
-            case ArgumentType.String:
+            case 'String' || 'string':
                 return str;
-            case ArgumentType.User:
-                let userStr = str;
+            case 'User' || 'user':
                 let id = this.getIdFromMention(str);
                 if (id) {
                     let guildMember = message.guild.members.get(id);
@@ -78,4 +82,3 @@ class Argument {
         }
     }
 }
-export = Argument;
