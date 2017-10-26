@@ -1,3 +1,4 @@
+import { ArgumentType } from './ArgumentType';
 import { Client } from './Client';
 import { Command } from './Command';
 import SqlProvider = require('./providers/SqlProvider');
@@ -8,4 +9,5 @@ export = {
     Command,
     SqlProvider,
     Argument,
+    ArgumentType
 };
