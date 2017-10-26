@@ -1,11 +1,11 @@
-const Command = require('../../src/Command');
-const Argument = require('../../src/Argument');
-const ArgumentType = require('../../src/ArgumentType');
+const {Command} = require('../../src/Command');
+const {Argument, ArgumentType} = require('../../src/Argument');
 
 class SampleCommand extends Command {
     constructor() {
         super({
             name: 'test',
+            aliases: ['t', 'test2'],
             description: 'A test command',
             usage: '!test',
             args: [new Argument({ name: 'sampleArg', type: ArgumentType.Integer, required: true })]
