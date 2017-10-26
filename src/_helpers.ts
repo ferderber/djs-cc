@@ -1,6 +1,6 @@
 import fs = require('fs');
 import path = require('path');
-import Command = require('./Command');
+import { Command } from './Command';
 var padCache = [
     '',
     ' ',
@@ -21,7 +21,8 @@ function loadCommands(files: string[]): any[] {
         if (ext === '.js') {
             try {
                 let _obj = require(files[i]);
-                if (_obj.prototype instanceof Command) {
+                let obj = <Command>new _obj();
+                if (obj instanceof Command) {
                     cmds.push(<Command>_obj);
                 }
             } catch (err) {
