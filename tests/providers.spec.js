@@ -16,9 +16,9 @@ beforeAll(async () => {
     await sqlClient.deleteAll(defaultGuild);
 });
 beforeEach(async () => {
-   await sqlClient.deleteAll(defaultGuild); 
+    await sqlClient.deleteAll(defaultGuild);
 });
-afterAll(async() => {
+afterAll(async () => {
     await sqlClient.deleteAll(defaultGuild);
 });
 test('Add a setting', async () => {
