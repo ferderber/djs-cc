@@ -1,9 +1,10 @@
 import Discord = require('discord.js');
-import Client = require('./Client');
+import { Client } from './Client';
+// declare class Message;
+
 /**
  * Extended version of the discord.js Message class (overwrites Client)
  */
-class Message extends Discord.Message {
-    client: Client;
+export class Message extends Discord.Message {
+    client : Client
 }
-export = Message;

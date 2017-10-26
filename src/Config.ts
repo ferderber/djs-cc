@@ -1,7 +1,7 @@
 /**
  * Interface for client config files
  */
-interface Config {
+export interface Config {
     db_name: string,
     host: string | 'localhost',
     provider: 'sqlite' | 'mssql' | 'postgres' | 'mariadb' | 'mysql',
@@ -9,4 +9,3 @@ interface Config {
     username: string,
     password: string
 }
-export = Config

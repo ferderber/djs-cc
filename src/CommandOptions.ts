@@ -1,10 +1,10 @@
-import Argument = require('./Argument');
+import { Argument } from './Argument';
 import { Role } from 'discord.js';
 
 /**
  * Options interface used to construct a command
  */
-interface CommandOptions {
+export interface CommandOptions {
     name: string;
     aliases?: string[];
     description?: string;
@@ -12,4 +12,3 @@ interface CommandOptions {
     usage: string;
     requiredRole?: Role;
 }
-export = CommandOptions;

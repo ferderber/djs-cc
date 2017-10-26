@@ -1,7 +1,7 @@
-import Command = require('../Command');
-import Argument = require('../Argument');
-import Message = require('../Message');
+import { Command } from '../Command';
+import { Message } from '../Message';
 import Discord = require('discord.js');
+import { Argument } from '../Argument';
 
 class HelpCommand extends Command {
     constructor() {

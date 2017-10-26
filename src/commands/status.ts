@@ -1,6 +1,6 @@
-import Command = require('../Command');
-import Argument = require('../Argument');
-import Message = require('../Message');
+import { Command } from '../Command';
+import { Argument } from '../Argument';
+import { Message } from '../Message';
 
 class StatusCommand extends Command {
     constructor() {

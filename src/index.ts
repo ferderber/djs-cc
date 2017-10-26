@@ -1,14 +1,11 @@
-import Client = require('./Client');
-import Command = require('./Command');
-import Provider = require('./providers/Provider');
+import { Client } from './Client';
+import { Command } from './Command';
 import SqlProvider = require('./providers/SqlProvider');
-import Argument = require('./Argument');
-import ArgumentType = require('./ArgumentType');
+import { Argument } from './Argument';
 
 export = {
     Client,
     Command,
     SqlProvider,
     Argument,
-    ArgumentType
 };

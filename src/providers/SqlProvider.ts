@@ -1,7 +1,7 @@
 import "reflect-metadata";
 import { Connection, ConnectionOptions, createConnection, FindOptions, ObjectLiteral } from 'typeorm';
 import Provider = require('./Provider');
-import Config = require('../Config');
+import { Config } from '../Config';
 import { Guild } from './models/Guild';
 import { Setting } from './models/Setting';
 class SQLProvider implements Provider {
@@ -11,7 +11,7 @@ class SQLProvider implements Provider {
         this.options = {
             driver: {
                 type: config.provider,
-                host: config.host, 
+                host: config.host,
                 username: config.username,
                 password: config.password,
                 database: config.db_name,
