@@ -1,10 +1,9 @@
 /**
- * Enum representing the different types an argument can be
+ * Arguments can be parsed into any of the ArgumentType types.
  */
-enum ArgumentType {
-    User,
-    Integer,
-    Float,
-    String
+export enum ArgumentType {
+    User = "User",
+    Integer = "Integer",
+    Float = "Float",
+    String = "String"
 }
-export = ArgumentType;

@@ -1,11 +1,11 @@
-import ArgumentType = require('./ArgumentType');
+import { ArgumentType } from './ArgumentType';
+
 /**
  * Options interface used to construct an argument
  */
-interface ArgumentOptions {
+export interface ArgumentOptions {
     name: string;
     type?: ArgumentType;
     required?: boolean;
     default?: any;
 }
-export = ArgumentOptions;
