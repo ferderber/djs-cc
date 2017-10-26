@@ -1,9 +1,11 @@
-const Client = require('../src/Client');
+const {
+    Client
+} = require('../src/Client');
 const SampleCommand = require('./commands/SampleCommand');
 const SqlProvider = require('../src/providers/SqlProvider');
 const config = require('./sample-config');
 const bot = new Client();
-const numDefaultCommands = bot.commands.size;
+let numDefaultCommands = bot.commands.size;
 class ErrorCommand extends SampleCommand {
     constructor() {
         super();
@@ -16,9 +18,15 @@ class ErrorCommand extends SampleCommand {
 const fakeMsg = {
     content: "!test 500",
     value: 500,
-    author: { username: "Cobalt#1234" },
+    author: {
+        username: "Cobalt#1234"
+    },
     guild: {
-        members: [{ user: { username: "Cobalt#1243" } }]
+        members: [{
+            user: {
+                username: "Cobalt#1243"
+            }
+        }]
     }
 };
 
@@ -27,34 +35,43 @@ let reply = (expectedMessage, done) => (str) => {
     return done();
 };
 
-beforeAll(async () => bot.registerCommand(new SampleCommand()));
+beforeAll(async() => {bot.registerCommand(new SampleCommand()); numDefaultCommands = bot.commands.size;});
 
 
-test('Valid command usage', async (done) => {
+test('Valid command usage', async(done) => {
     fakeMsg.reply = reply(`argument sampleArg was: ${fakeMsg.value}`, done);
     await bot.onMessage(fakeMsg); //Simulate message
 });
 
-test('Non existent command', async (done) => {
+test('Valid help command usage', async(done) => {
+    fakeMsg.content = "!test?";
+    fakeMsg.reply = (obj) => {
+        expect(obj).toBeInstanceOf(Object);
+        return done();
+    };
+    await bot.onMessage(fakeMsg);
+});
+
+test('Non existent command', async(done) => {
     fakeMsg.content = "!unknowncommand";
     fakeMsg.reply = reply('Unknown command. Try `!help`', done); //Expected message for unknown command
     await bot.onMessage(fakeMsg);
 });
 
-test('Error in command', async (done) => {
+test('Error in command', async(done) => {
     fakeMsg.content = "!test @aaa";
     fakeMsg.reply = reply('Error: Converting provided argument (`@aaa`) `sampleArg` to Integer', done);
     await bot.onMessage(fakeMsg);
 });
 
-test('Non permitted user', async (done) => {
+test('Non permitted user', async(done) => {
     fakeMsg.author.username = "OtherUser"; //invalid user (not permitted)
     fakeMsg.content = "!test 50"; //valid usage
     fakeMsg.reply = reply('You do not have permission to use \`!test\`', done);
     await bot.onMessage(fakeMsg);
 });
 
-test('command that throws error', async (done) => {
+test('command that throws error', async(done) => {
     bot.unregisterCommand(new SampleCommand());
     bot.registerCommand(new ErrorCommand());
     fakeMsg.author.username = 'Cobalt';
@@ -68,7 +85,7 @@ test('registerProvider registers to settings property', () => {
     expect(bot.settings).toEqual(new SqlProvider(config));
 });
 
-test('registerCommandDirectory', async (done) => {
+test('registerCommandDirectory valid', async(done) => {
     bot.unregisterCommand(new SampleCommand());
     await bot.registerCommandDirectory(__dirname + '/commands');
     fakeMsg.author.username = 'Cobalt';
@@ -77,13 +94,12 @@ test('registerCommandDirectory', async (done) => {
     await bot.onMessage(fakeMsg);
 });
 
-test('registerCommandDirectory', async () => {
-    bot.unregisterCommand(new SampleCommand());
+test('registerCommandDirectory fail', async() => {
     await bot.registerCommandDirectory('fakePath');
     expect(bot.commands.size).toEqual(numDefaultCommands);
 });
 
-afterAll(async (done) => {
+afterAll(async(done) => {
     await bot.destroy();
     done();
 });
