@@ -1,12 +1,12 @@
-import Config = require('./Config');
+import { Config } from './Config';
 import Discord = require('discord.js');
 import Provider = require('./providers/Provider');
 import SQLProvider = require('./providers/SqlProvider');
-import Command = require('./Command');
-import Message = require('./Message');
+import { Command } from './Command';
+import { Message } from './Message';
 import defaultCommands = require('./commands');
 import { getCommandsFromDirectory } from './_helpers';
-class Client extends Discord.Client {
+export class Client extends Discord.Client {
     commands: Map<string, Command> = new Map();
     prefix: string = '!';
     public settings: Provider;
@@ -18,32 +18,42 @@ class Client extends Discord.Client {
     /**
      * @param msg Any message seen by the bot
      */
-    async onMessage(msg: Discord.Message) {
+    async onMessage(msg: Message) {
         if (msg.content.indexOf(this.prefix) === 0) {
             let argStrings = msg.content.split(' ');
-            let cmdString = argStrings[0].substring(1);
-            let cmd = this.commands.get(cmdString);
+            let cmdString = argStrings[0].substring(1).toLowerCase();
             let message = <Message>msg; //Cast to custom Message wrapper
-            if (cmd) {
-                if (cmd.hasPermission === undefined || cmd.hasPermission(message)) {
-                    let args;
-                    try {
-                        args = cmd.parseArgs(message);
-                    } catch (e) {
-                        message.reply(`Error: ${e.message}`);
-                    }
-                    if (args) {
-                        try {
-                            let result = await cmd.run(message, args);
-                        } catch (e) {
-                            message.reply(`An error occured: ${e.message}`);
-                        }
-                    }
-                } else {
-                    message.reply(`You do not have permission to use \`${this.prefix}${cmd.name}\``);
+            Object.defineProperty(message, "client", { value: this });
+            let cmd;
+            //If the command ends with a ? return help message
+            if (cmdString.charAt(cmdString.length - 1) === '?') {
+                cmd = this.commands.get(cmdString.substring(0, cmdString.length - 1));
+                if (cmd) {
+                    message.reply({ embed: cmd.help(message) });
                 }
             } else {
-                message.reply(`Unknown command. Try \`${this.prefix}help\``);
+                cmd = this.commands.get(cmdString);
+                if (cmd) {
+                    if (cmd.hasPermission === undefined || cmd.hasPermission(message)) {
+                        let args;
+                        try {
+                            args = cmd.parseArgs(message);
+                        } catch (e) {
+                            message.reply(`Error: ${e.message}`);
+                        }
+                        if (args) {
+                            try {
+                                let result = await cmd.run(message, args);
+                            } catch (e) {
+                                message.reply(`An error occured: ${e.message}`);
+                            }
+                        }
+                    } else {
+                        message.reply(`You do not have permission to use \`${this.prefix}${cmd.name}\``);
+                    }
+                } else {
+                    message.reply(`Unknown command. Try \`${this.prefix}help\``);
+                }
             }
         }
     }
@@ -52,9 +62,9 @@ class Client extends Discord.Client {
      * @param cmd Instance of a command
      */
     registerCommand(cmd: Command) {
-        this.commands.set(cmd.name, cmd);
+        this.commands.set(cmd.name.toLowerCase(), cmd);
         if (cmd.aliases) {
-            cmd.aliases.forEach((alias) => this.commands.set(alias, cmd));
+            cmd.aliases.forEach((alias) => this.commands.set(alias.toLowerCase(), cmd));
         }
     }
     /**
@@ -64,10 +74,7 @@ class Client extends Discord.Client {
     registerCommands<T extends Command>(cmds: (new () => T)[]): void {
         cmds.forEach(cmd => {
             let cmdInstance = new cmd();
-            this.commands.set(cmdInstance.name, cmdInstance);
-            if (cmdInstance.aliases) {
-                cmdInstance.aliases.forEach((alias) => this.commands.set(alias, cmdInstance));
-            }
+            this.registerCommand(cmdInstance);
         });
     }
 
@@ -98,4 +105,3 @@ class Client extends Discord.Client {
         this.settings = new SQLProvider(config);
     }
 }
-export = Client;

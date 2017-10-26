@@ -1,9 +1,10 @@
-import { Role } from 'discord.js';
-import Message = require('./Message');
-import Argument = require('./Argument');
-import CommandOptions = require('./CommandOptions');
+import { Role, RichEmbed } from 'discord.js';
+import { Message } from './Message';
+import { Argument } from './Argument';
+import { CommandOptions } from './CommandOptions';
+import { rightPad } from './_helpers';
 
-abstract class Command {
+export abstract class Command {
     name: string;
     aliases: string[] = [];
     description: string;
@@ -30,7 +31,9 @@ abstract class Command {
         }
         for (let i = 0; i < this.args.length; i++) {
             let arg = this.args[i];
-            if (i >= userArgs.length && arg.required) { throw new Error(); }
+            if (i >= userArgs.length && arg.required) {
+                throw new Error(`${arg.name} is missing. use \`${message.client.prefix}${this.name}?\``);
+            }
             else if (i >= userArgs.length) { break; }
             let userArg = userArgs[i];
             try {
@@ -48,6 +51,32 @@ abstract class Command {
         }
         return argMap;
     }
+
+    help(msg: Message): RichEmbed {
+        var embed = new RichEmbed();
+        let aliasStr = '';
+        for (var i = 0; i < this.aliases.length; i++) {
+            aliasStr += this.aliases[i];
+            if (i !== this.aliases.length - 1) {
+                aliasStr += ' | ';
+            }
+        }
+        let titleStr = `${this.name} ${aliasStr.length !== 0 ? `(${aliasStr})` : ''}`;
+        embed.setTitle(titleStr);
+
+        embed.setDescription(this.description);
+        let args = '';
+        if (this.args) {
+            for (var j = 0; j < this.args.length; j++) {
+                args += `\`${rightPad(this.args[j].name + ':', 12)}${this.args[j].type}\`\n`;
+            }
+            if (args.length > 0) {
+                embed.addField('Arguments:', args, true);
+            }
+        }
+        embed.addField('Usage:', `${msg.client.prefix}${this.usage}`, true);
+        return embed;
+    }
     /**
      * @param msg Message that invoked the command
      * @returns Whether the user who wrote the message has permission (default: true)
@@ -62,4 +91,3 @@ abstract class Command {
      */
     abstract run(msg: Message, args: Map<string, any>): Promise<any>
 }
-export = Command;
