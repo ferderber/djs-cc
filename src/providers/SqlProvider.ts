@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import { Connection, ConnectionOptions, createConnection, ObjectLiteral } from 'typeorm';
+import { Connection, ConnectionOptions, createConnection } from 'typeorm';
 import Provider = require('./Provider');
 import { Config } from '../Config';
 import { Guild } from './models/Guild';

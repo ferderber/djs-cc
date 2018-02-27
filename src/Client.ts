@@ -43,7 +43,7 @@ export class Client extends Discord.Client {
                         }
                         if (args) {
                             try {
-                                let result = await cmd.run(message, args);
+                                await cmd.run(message, args);
                             } catch (e) {
                                 message.reply(`An error occured: ${e.message}`);
                             }
