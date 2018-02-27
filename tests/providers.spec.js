@@ -46,7 +46,7 @@ test('get all settings', async () => {
     expect(settings).toEqual([]);
 });
 test('delete all on empty', async () => {
-    let res = await sqlClient.deleteAll(defaultGuild);
+    let res = await sqlClient.deleteAll('abc');
     expect(res).toBe(undefined);
 });
 test('get one value', async () => {
