@@ -2,6 +2,7 @@ files/
 .vscode/
 node_modules/
 npm-debug.log
+yarn-error.log
 build
 .DS_STORE
 *.db
