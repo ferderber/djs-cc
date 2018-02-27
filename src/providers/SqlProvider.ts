@@ -1,5 +1,5 @@
 import "reflect-metadata";
-import { Connection, ConnectionOptions, createConnection, FindOptions, ObjectLiteral } from 'typeorm';
+import { Connection, ConnectionOptions, createConnection, ObjectLiteral } from 'typeorm';
 import Provider = require('./Provider');
 import { Config } from '../Config';
 import { Guild } from './models/Guild';
@@ -9,18 +9,10 @@ class SQLProvider implements Provider {
     options: ConnectionOptions;
     constructor(config: Config) {
         this.options = {
-            driver: {
-                type: config.provider,
-                host: config.host,
-                username: config.username,
-                password: config.password,
-                database: config.db_name,
-                storage: config.storage
-            },
-            autoSchemaSync: true,
-            logging: {
-                logFailedQueryError: true
-            },
+            type: "sqlite",
+            database: config.db_name + '.db',
+            synchronize: true,
+            logging: true,
             entities: [Guild, Setting]
         };
     }
@@ -46,7 +38,7 @@ class SQLProvider implements Provider {
      * @param guildId
      */
     async getAll(guildId: string): Promise<Setting[]> {
-        let guild = (await this.db.getRepository(Guild).findOneById(guildId, { alias: 'guild', innerJoinAndSelect: { settings: 'guild.settings' } }));
+        let guild = await this.db.getRepository(Guild).findOneById(guildId, {relations: ['settings']});
         if (guild && guild.settings) {
             return guild.settings;
         }
@@ -60,7 +52,7 @@ class SQLProvider implements Provider {
      * @param guildId Id of the guild to remove from
      */
     async delete(property: string, guildId: string): Promise<any> {
-        let guild = await this.db.getRepository(Guild).findOneById(guildId, { alias: 'guild', innerJoinAndSelect: { settings: 'guild.settings' } });
+        let guild = await this.db.getRepository(Guild).findOneById(guildId, {relations: ['settings']});
         if (guild) {
             return await this.db.getRepository(Setting).remove(guild.settings.find(setting => setting.property === property));
         }
@@ -70,7 +62,7 @@ class SQLProvider implements Provider {
      * @param guildId Id of the guild to remove from
      */
     async deleteAll(guildId: string): Promise<any> {
-        let guild = await this.db.getRepository(Guild).findOneById(guildId, { alias: 'guild', innerJoinAndSelect: { settings: 'guild.settings' } });
+        let guild = await this.db.getRepository(Guild).findOneById(guildId, {relations: ['settings']});
         if (guild) {
             return await this.db.getRepository(Setting).remove(guild.settings);
         }
@@ -82,7 +74,7 @@ class SQLProvider implements Provider {
      * @param guildId Id of the guild to add a setting to
      */
     async set(property: string, value: string, guildId: string) {
-        let guild = await this.db.getRepository(Guild).findOneById(guildId, { alias: 'guild', innerJoinAndSelect: { settings: 'guild.settings' } });
+        let guild = await this.db.getRepository(Guild).findOneById(guildId, {relations: ['settings']});
         if (!guild) {
             guild = new Guild();
             guild.id = guildId;
@@ -101,8 +93,8 @@ class SQLProvider implements Provider {
         } else {
             guild.settings.push(setting);
         }
-        await this.db.getRepository(Guild).persist(guild);
-        return await this.db.getRepository(Setting).persist(setting);
+        await this.db.getRepository(Guild).save(guild);
+        return await this.db.getRepository(Setting).save(setting);
     }
 }
 export = SQLProvider; 
