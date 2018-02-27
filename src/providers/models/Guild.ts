@@ -3,7 +3,7 @@ import { Setting } from './Setting';
 
 @Entity('guild')
 export class Guild {
-    @PrimaryColumn('string')
+    @PrimaryColumn()
     id: string;
     @OneToMany(type => Setting, setting => setting.guild)
     settings: Setting[] = [];
