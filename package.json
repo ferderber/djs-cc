@@ -1,6 +1,6 @@
 {
   "name": "djs-cc",
-  "version": "0.3.2",
+  "version": "0.4.0",
   "description": "A Discord.js 'extension' that allows for easy creation of commands.",
   "main": "build/index.js",
   "typings": "build/index",
@@ -65,7 +65,7 @@
     "ts-jest": "^21.1.3",
     "tslint": "^5.8.0",
     "typedoc": "^0.10.0",
-    "typescript": "^2.5.3"
+    "typescript": "^2.7.2"
   },
   "eslintConfig": {
     "parserOptions": {
