@@ -1,6 +1,6 @@
 import { Role, RichEmbed } from 'discord.js';
 import { Message } from './Message';
-import { Argument } from './Argument';
+import { Argument, ArgumentType } from './Argument';
 import { CommandOptions } from './CommandOptions';
 import { rightPad } from './_helpers';
 
@@ -35,7 +35,25 @@ export abstract class Command {
                 throw new Error(`${arg.name} is missing. use \`${message.client.prefix}${this.name}?\``);
             }
             else if (i >= userArgs.length) { break; }
-            let userArg = userArgs[i];
+            let userArg;
+            //if the final arg is being parsed and it's a string, combine userArgs
+            if (i === this.args.length - 1 && arg.type === ArgumentType.String) {
+                userArg = userArgs.slice(i).join(' ');
+            } else {
+                userArg = userArgs[i]
+                //if the current arg has a quote, find the end quote
+                if(userArg.includes('"') && userArg.split('"').length === 2) {
+                    for(let k = i + 1; k < userArgs.length; k++) {
+                        if(userArgs[k].includes('"')) {
+                            userArg = userArgs.slice(i, k + 1).join(' ');
+                            userArgs = [...userArgs.slice(0, i), userArg, ...userArgs.slice(k+1)];
+                            break;
+                        }
+                    }
+                }
+            }
+            userArg = userArg.replace('"', '');
+            userArg = userArg.replace('\"', '');
             try {
                 if (arg.required) {
                     argMap.set(arg.name, arg.parseArg(userArg, message));
@@ -90,4 +108,5 @@ export abstract class Command {
      * @param args Arguments extracted from the message
      */
     abstract run(msg: Message, args: Map<string, any>): Promise<any>
+    
 }

@@ -6,6 +6,7 @@ const cmd = new SampleCommand();
 const arg1 = new Argument({ name: 'str', type: 'String', required: true });
 const arg2 = new Argument({ name: 'num', type: 'Integer', required: false });
 const arg3 = new Argument({ name: 'user', type: 'User', required: true });
+const arg4 = new Argument({ name: 'str4', type: 'String', required: true });
 let message;
 beforeEach(() => {
     cmd.args = [];
@@ -55,4 +56,16 @@ test('ParseArgs: two arguments (required, required)', async () => {
     expect(() => cmd.parseArgs(message)).toThrow();
     message.content = message.content + ' <@125385861117378563>';
     expect(cmd.parseArgs(message)).toEqual(new Map([['str', 'strValue'], ['user', message.guild.members.first().user]]));
+});
+
+test('ParseArgs: two arguments, multi-word string', async () => {
+    cmd.args = [arg1, arg4];
+    message.content = "!test string multiple word string";
+    expect(cmd.parseArgs(message)).toEqual(new Map([['str', 'string'], ['str4', 'multiple word string']]));
+    message.content = '!test "multiple words wrapped in quotes" end string';
+    expect(cmd.parseArgs(message)).toEqual(new Map([['str', 'multiple words wrapped in quotes'], ['str4', 'end string']]));
+    message.content = '!test "multiple words wrapped in quotes" "end string wrapped in quotes"';
+    expect(cmd.parseArgs(message)).toEqual(new Map([['str', 'multiple words wrapped in quotes'], ['str4', 'end string wrapped in quotes']]));
+    message.content = '!test string "end string wrapped in quotes"';
+    expect(cmd.parseArgs(message)).toEqual(new Map([['str', 'string'], ['str4', 'end string wrapped in quotes']]));
 });

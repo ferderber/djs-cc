@@ -19,6 +19,7 @@ test('ParseArg: Converting', async () => {
     let arg = new Argument({ name: 'test', type: 'String', required: true });
     expect(arg.parseArg('value', message)).toEqual('value');
 });
+
 test('ParseArg: Number', async () => {
     let arg2 = new Argument({ name: 'test2', type: 'Integer', required: true });
     expect(arg2.parseArg('55', message)).toBe(55);
