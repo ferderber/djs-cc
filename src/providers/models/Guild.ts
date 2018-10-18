@@ -6,5 +6,5 @@ export class Guild {
     @PrimaryColumn()
     id: string;
     @OneToMany(type => Setting, setting => setting.guild)
-    settings: Setting[] = [];
+    settings: Setting[];
 }
