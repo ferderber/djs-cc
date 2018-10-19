@@ -71,7 +71,7 @@ export class Argument {
                         throw new Error(`Could not find user for argument \`${this.name}\``)
                     }
                 } else {
-                    let guildMember = message.guild.members.find('displayName', str);
+                    let guildMember = message.guild.members.find(member => member.displayName === str);
                     if (guildMember) {
                         return guildMember.user;
                     }
