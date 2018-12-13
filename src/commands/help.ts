@@ -14,7 +14,7 @@ class HelpCommand extends Command {
     }
     async run(msg: Message, args: Map<string, Argument>) {
         let commands = msg.client.commands;
-        let embed = new Discord.RichEmbed();
+        let embed = new Discord.MessageEmbed();
         embed.setTitle('Help Command');
         let parsedCommands = new Array<Command>();
         commands.forEach((cmd) => {
