@@ -1,7 +1,7 @@
 import { Command } from '../Command';
 import { Message } from '../Message';
 import { Argument } from '../Argument';
-class PingCommand extends Command {
+export class PingCommand extends Command {
     constructor() {
         super({
             name: 'ping',
@@ -13,5 +13,3 @@ class PingCommand extends Command {
         msg.reply('Pong!');
     }
 }
-
-export = PingCommand;

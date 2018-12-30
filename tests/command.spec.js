@@ -1,6 +1,5 @@
 const SampleCommand = require('./commands/SampleCommand');
-const {Command} = require('../src/Command');
-const Argument = require('../src/Argument').Argument;
+const {Command, Argument} = require('../src');
 const Collection = require('discord.js').Collection;
 const cmd = new SampleCommand();
 const arg1 = new Argument({ name: 'str', type: 'String', required: true });

@@ -1,18 +1,18 @@
 import { Config } from './Config';
-import Discord = require('discord.js');
-import Provider = require('./providers/Provider');
-import SQLProvider = require('./providers/SqlProvider');
+import { Client as DiscordClient } from 'discord.js';
+import { Provider } from './providers/Provider';
+import { SQLProvider } from './providers/SqlProvider';
 import { Command } from './Command';
 import { Message } from './Message';
-import defaultCommands = require('./commands');
+import {HelpCommand, PingCommand, StatusCommand} from './commands';
 import { getCommandsFromDirectory } from './_helpers';
-export class Client extends Discord.Client {
+export class Client extends DiscordClient {
     commands: Map<string, Command> = new Map();
     prefix: string = '!';
     public settings: Provider;
     constructor() {
         super();
-        this.registerCommands(defaultCommands);
+        this.registerCommands([HelpCommand, PingCommand, StatusCommand]);
         this.on('message', this.onMessage);
     }
     /**

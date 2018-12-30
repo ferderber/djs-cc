@@ -1,9 +1,7 @@
-const SQLProvider = require('../src/providers/SqlProvider');
-const Client = require('../src/Client');
-const Provider = require('../src/providers/Provider');
+const {SQLProvider, Client, Provider} = require('../src');
 const config = require('./sample-config');
 const defaultGuild = '125385898593484800';
-let sqlClient;
+var sqlClient;
 
 async function addBaseSettings() {
     await sqlClient.set('name1', 'value', defaultGuild);

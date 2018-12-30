@@ -2,7 +2,7 @@ import { Command } from '../Command';
 import { Argument } from '../Argument';
 import { Message } from '../Message';
 
-class StatusCommand extends Command {
+export class StatusCommand extends Command {
     constructor() {
         super({
             name: 'status',
@@ -15,5 +15,3 @@ class StatusCommand extends Command {
     }
 
 }
-
-export = StatusCommand;

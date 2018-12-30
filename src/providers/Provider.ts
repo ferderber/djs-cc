@@ -1,7 +1,7 @@
 /*
     All settings providers implement Provider
 */
-interface Provider {
+export interface Provider {
     setup(options?: any): Promise<any>,
     get(property: string, guildId?: string): Promise<string>,
     getAll(guildId?: string): Promise<any[]>,
@@ -9,4 +9,3 @@ interface Provider {
     deleteAll(guildId: string): Promise<any>,
     set(property: string, value: string, guildId?: string): void
 }
-export = Provider

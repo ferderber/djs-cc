@@ -1,10 +1,10 @@
 import "reflect-metadata";
 import { Connection, ConnectionOptions, createConnection } from 'typeorm';
-import Provider = require('./Provider');
+import { Provider } from './Provider';
 import { Config } from '../Config';
 import { Guild } from './models/Guild';
 import { Setting } from './models/Setting';
-class SQLProvider implements Provider {
+export class SQLProvider implements Provider {
     db: Connection;
     options: ConnectionOptions;
     constructor(config: Config) {
@@ -97,4 +97,3 @@ class SQLProvider implements Provider {
         return await this.db.getRepository(Setting).save(setting);
     }
 }
-export = SQLProvider; 

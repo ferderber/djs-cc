@@ -1,5 +1,4 @@
-const {Command} = require('../../src/Command');
-const {Argument, ArgumentType} = require('../../src/Argument');
+const {Command, Argument, ArgumentType} = require('../../src');
 
 class SampleCommand extends Command {
     constructor() {

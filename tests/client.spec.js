@@ -1,8 +1,5 @@
-const {
-    Client
-} = require('../src/Client');
+const { Client, SQLProvider } = require('../src');
 const SampleCommand = require('./commands/SampleCommand');
-const SqlProvider = require('../src/providers/SqlProvider');
 const config = require('./sample-config');
 const bot = new Client();
 let numDefaultCommands = bot.commands.size;
@@ -82,7 +79,7 @@ test('command that throws error', async(done) => {
 
 test('registerProvider registers to settings property', () => {
     bot.registerProvider(config);
-    expect(bot.settings).toEqual(new SqlProvider(config));
+    expect(bot.settings).toEqual(new SQLProvider(config));
 });
 
 test('registerCommandDirectory valid', async(done) => {

@@ -1,9 +1,9 @@
 import { Command } from '../Command';
 import { Message } from '../Message';
-import Discord = require('discord.js');
+import { MessageEmbed } from 'discord.js';
 import { Argument } from '../Argument';
 
-class HelpCommand extends Command {
+export class HelpCommand extends Command {
     constructor() {
         super({
             name: 'help',
@@ -14,7 +14,7 @@ class HelpCommand extends Command {
     }
     async run(msg: Message, args: Map<string, Argument>) {
         let commands = msg.client.commands;
-        let embed = new Discord.MessageEmbed();
+        let embed = new MessageEmbed();
         embed.setTitle('Help Command');
         let parsedCommands = new Array<Command>();
         commands.forEach((cmd) => {
@@ -27,5 +27,3 @@ class HelpCommand extends Command {
         msg.channel.send({ embed });
     }
 }
-
-export = HelpCommand;

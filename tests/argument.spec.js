@@ -1,4 +1,4 @@
-const Argument = require('../src/Argument').Argument;
+const { Argument } = require('../src');
 const Collection = require('discord.js').Collection;
 const config = require('./sample-config');
 let message = {
