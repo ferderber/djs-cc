@@ -1,4 +1,4 @@
-import {Message as DiscordMessage } from 'discord.js';
+import { Message as DiscordMessage } from 'discord.js';
 import { Client } from './Client';
 // declare class Message;
 
