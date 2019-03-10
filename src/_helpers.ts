@@ -21,11 +21,19 @@ function loadCommands(files: string[]): any[] {
         if (ext === '.js') {
             try {
                 let _obj = require(files[i]);
+                // if an object is exported, we expect a default export property
+                if (typeof _obj === 'object') {
+                    if (_obj['default'] === undefined) {
+                        throw new Error(`Module '${files[i]}' must have a default export of type Command.`);
+                    }
+                    _obj = _obj['default'];
+                }
                 let obj = <Command>new _obj();
                 if (obj instanceof Command) {
                     cmds.push(<Command>_obj);
                 }
             } catch (err) {
+                console.error(err);
             }
         }
     }
