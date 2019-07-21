@@ -1,6 +1,6 @@
 {
   "name": "djs-cc",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "A Discord.js 'extension' that allows for easy creation of commands.",
   "main": "build/index.js",
   "typings": "build/index",
@@ -49,24 +49,24 @@
   },
   "homepage": "https://github.com/matthewferderber/djs-cc#readme",
   "dependencies": {
-    "discord.js": "discordjs/discord.js#master",
+    "discord.js": "11.5.1",
     "reflect-metadata": "^0.1.12",
-    "typeorm": "^0.2.7"
+    "typeorm": "0.2.18"
   },
   "optionalDependencies": {
     "mysql": "^2.13.0",
-    "sqlite3": "^4.0.2"
+    "sqlite3": "4.0.9"
   },
   "devDependencies": {
     "@types/jest": "^21.1.5",
-    "@types/node": "10.12.14",
+    "@types/node": "12.6.8",
     "eslint": "^4.9.0",
     "jest": "^23.6.0",
     "nodemon": "^1.11.0",
     "ts-jest": "^23.10.5",
     "tslint": "^5.8.0",
     "typedoc": "^0.10.0",
-    "typescript": "^2.7.2"
+    "typescript": "3.4"
   },
   "eslintConfig": {
     "parserOptions": {
