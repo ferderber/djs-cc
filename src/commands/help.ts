@@ -1,6 +1,6 @@
 import { Command } from '../Command';
 import { Message } from '../Message';
-import { MessageEmbed } from 'discord.js';
+import { RichEmbed } from 'discord.js';
 import { Argument } from '../Argument';
 
 export class HelpCommand extends Command {
@@ -14,7 +14,7 @@ export class HelpCommand extends Command {
     }
     async run(msg: Message, args: Map<string, Argument>) {
         let commands = msg.client.commands;
-        let embed = new MessageEmbed();
+        let embed = new RichEmbed();
         embed.setTitle('Help Command');
         let parsedCommands = new Array<Command>();
         commands.forEach((cmd) => {

@@ -1,4 +1,4 @@
-import { Role, MessageEmbed } from 'discord.js';
+import { Role, RichEmbed } from 'discord.js';
 import { Message } from './Message';
 import { Argument, ArgumentType } from './Argument';
 import { CommandOptions } from './CommandOptions';
@@ -70,8 +70,8 @@ export abstract class Command {
         return argMap;
     }
 
-    help(msg: Message): MessageEmbed {
-        var embed = new MessageEmbed();
+    help(msg: Message): RichEmbed {
+        var embed = new RichEmbed();
         let aliasStr = '';
         for (var i = 0; i < this.aliases.length; i++) {
             aliasStr += this.aliases[i];
