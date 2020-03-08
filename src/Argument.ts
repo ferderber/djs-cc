@@ -1,4 +1,4 @@
-import { GuildMember } from 'discord.js';
+import { GuildMember, User } from 'discord.js';
 import { Message } from './Message';
 import { ArgumentOptions } from './ArgumentOptions';
 import { ArgumentType } from './ArgumentType';
@@ -43,7 +43,7 @@ export class Argument {
      * @param str Current argument value to parse
      * @param message Message that invoked the command
      */
-    parseArg(str: string, message: Message): any {
+    async parseArg(str: string, message: Message): Promise<any> {
         switch (this.type) {
             case 'Integer' || 'integer':
                 if (this.isNumber(str)) {
@@ -64,14 +64,14 @@ export class Argument {
             case 'User' || 'user':
                 let id = this.getIdFromMention(str);
                 if (id) {
-                    let guildMember = message.guild.members.get(id);
+                    let guildMember = await message.guild.members.fetch(id);
                     if (guildMember) {
                         return guildMember.user;
                     } else {
                         throw new Error(`Could not find user for argument \`${this.name}\``)
                     }
                 } else {
-                    let guildMember = message.guild.members.find(member => member.displayName === str);
+                    let guildMember = (await message.guild.members.fetch({query: str})).first();
                     if (guildMember) {
                         return guildMember.user;
                     }

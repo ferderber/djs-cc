@@ -1,4 +1,4 @@
-import { Role, RichEmbed } from 'discord.js';
+import { Role, MessageEmbed } from 'discord.js';
 import { Message } from './Message';
 import { Argument, ArgumentType } from './Argument';
 import { CommandOptions } from './CommandOptions';
@@ -23,7 +23,7 @@ export abstract class Command {
      * @param message Message that invoked the command
      * @returns Map of the found arguments
      */
-    parseArgs(message: Message): Map<string, Argument> {
+    async parseArgs(message: Message): Promise<Map<string, Argument>> {
         let userArgs = message.content.split(' ').splice(1);
         var argMap = new Map<string, Argument>();
         if (this.args.length === 0 && userArgs.length > 0) {
@@ -56,9 +56,9 @@ export abstract class Command {
             userArg = userArg.replace('\"', '');
             try {
                 if (arg.required) {
-                    argMap.set(arg.name, arg.parseArg(userArg, message));
+                    argMap.set(arg.name, await arg.parseArg(userArg, message));
                 } else {
-                    let value = arg.parseArg(userArg, message);
+                    let value = await arg.parseArg(userArg, message);
                     if (value !== undefined) {
                         argMap.set(arg.name, value);
                     }
@@ -70,8 +70,8 @@ export abstract class Command {
         return argMap;
     }
 
-    help(msg: Message): RichEmbed {
-        var embed = new RichEmbed();
+    help(msg: Message): MessageEmbed {
+        var embed = new MessageEmbed();
         let aliasStr = '';
         for (var i = 0; i < this.aliases.length; i++) {
             aliasStr += this.aliases[i];

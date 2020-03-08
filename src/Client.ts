@@ -37,7 +37,7 @@ export class Client extends DiscordClient {
                     if (cmd.hasPermission === undefined || cmd.hasPermission(message)) {
                         let args;
                         try {
-                            args = cmd.parseArgs(message);
+                            args = await cmd.parseArgs(message);
                         } catch (e) {
                             message.reply(`Error: ${e.message}`);
                         }
