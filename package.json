@@ -1,6 +1,6 @@
 {
   "name": "djs-cc",
-  "version": "0.8.4",
+  "version": "0.8.5",
   "description": "A Discord.js 'extension' that allows for easy creation of commands.",
   "main": "build/index.js",
   "typings": "build/index",
