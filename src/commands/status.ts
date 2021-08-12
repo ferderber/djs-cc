@@ -1,17 +1,18 @@
-import { Command } from '../Command';
-import { Argument } from '../Argument';
-import { Message } from '../Message';
+import { Command } from "../command";
+import { Argument } from "../argument";
+import { Message } from "../message";
 
-export class StatusCommand extends Command {
-    constructor() {
-        super({
-            name: 'status',
-            description: 'Displays status information about the bot',
-            usage: 'status'
-        });
-    }
-    async run(msg: Message, args: Map<string, Argument>) {
-        msg.reply('TODO: implement');
-    }
+export default class StatusCommand extends Command {
+  constructor() {
+    super({
+      name: "status",
+      description: "Displays status information about the bot",
+      usage: "status",
+    });
+  }
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  async run(msg: Message, _args: Map<string, Argument>): Promise<void> {
+    msg.reply("TODO: implement");
+  }
 }

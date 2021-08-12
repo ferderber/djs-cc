@@ -1,6 +1,6 @@
-export { ArgumentType } from './ArgumentType'
-export { Argument } from './Argument'
-export { Client } from './Client'
-export { Command } from './Command'
-export { SQLProvider } from './providers/SqlProvider'
-export { Message } from './Message'
+export { ArgumentType } from "./argumentType";
+export { Argument } from "./argument";
+export { Client } from "./client";
+export { Command } from "./command";
+export { SQLProvider } from "./providers";
+export { Message } from "./message";
