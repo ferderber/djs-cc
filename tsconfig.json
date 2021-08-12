@@ -1,17 +1,25 @@
 {
-    "compilerOptions": {
-        "outDir": "build",
-        "target": "es6",
-        "module": "commonjs",
-        "moduleResolution": "node",
-        "declaration": true,
-        "noImplicitAny": true,
-        "sourceMap": true,
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "esModuleInterop": true
-    },
-    "include": [
-        "./src/**/*"
-    ]
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true,
+    "allowUnreachableCode": false,
+    "allowUnusedLabels": false,
+    "declaration": true,
+    "declarationMap": true,
+    "esModuleInterop": true,
+    "module": "commonjs",
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "noImplicitReturns": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "pretty": true,
+    "sourceMap": true,
+    "strict": true,
+    "outDir": "build",
+    "target": "es2017",
+    "lib": ["es2017"],
+    "paths": {}
+  },
+  "include": ["./src/**/*.ts"]
 }

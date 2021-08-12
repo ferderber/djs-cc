@@ -32,32 +32,33 @@ The idea for this project came after using many different command frameworks and
 ## Sample usage
 
 ```javascript
-const CommandClient = require('djs-cc');
+const CommandClient = require("djs-cc");
 const Command = CommandClient.Command;
 const Argument = CommandClient.Argument;
 const ArgumentType = CommandClient.ArgumentType;
 
 class SampleCommand extends Command {
-    constructor() {
-        super({
-            name: 'test',
-            description: 'A test command',
-            usage: '!test',
-            args: [
-                new Argument({
-                        name: 'sampleArg',
-                        type: ArgumentType.Integer,
-                        required: true
-                })]
-        });
-    }
-    async run(msg, args) {
-        await msg.reply(`argument sampleArg was: ${args.get('sampleArg')}`);
-    }
-    //(optional) function to check if the user is allowed to use the command
-    hasPermission(msg) {
-        return msg.author.username.includes('Cobalt');
-    }
+  constructor() {
+    super({
+      name: "test",
+      description: "A test command",
+      usage: "!test",
+      args: [
+        new Argument({
+          name: "sampleArg",
+          type: ArgumentType.Integer,
+          required: true,
+        }),
+      ],
+    });
+  }
+  async run(msg, args) {
+    await msg.reply(`argument sampleArg was: ${args.get("sampleArg")}`);
+  }
+  //(optional) function to check if the user is allowed to use the command
+  hasPermission(msg) {
+    return msg.author.username.includes("Cobalt");
+  }
 }
 const bot = new CommandClient.Client();
 bot.registerCommand(new SampleCommand());
