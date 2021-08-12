@@ -12,10 +12,12 @@
     "start": "yarn build && node index.js",
     "build": "tsc -p tsconfig.build.json",
     "clean": "rm -rf build/",
-    "prepublishOnly": "yarn clean && yarn run build",
-    "lint": "prettier --write . && eslint . --ext .js,.jsx,.ts,.tsx",
+    "prepublishOnly": "yarn clean && yarn build",
+    "lint:fix": "prettier --write . && eslint . --ext .js,.jsx,.ts,.tsx --fix",
+    "lint": "prettier . && eslint . --ext .js,.jsx,.ts,.tsx",
     "docs": "typedoc --out ./docs --exclude index",
-    "test": "jest -c jest.config.js",
+    "test": "jest",
+    "test:ci": "yarn test --ci",
     "test:coverage": "jest --coverage"
   },
   "repository": {
