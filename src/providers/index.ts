@@ -1,2 +1,2 @@
-export { default as SQLProvider } from "./SqlProvider";
+export { default as SQLProvider } from "./sqlProvider";
 export { default as Provider } from "./provider";
