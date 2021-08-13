@@ -1,6 +1,6 @@
 {
   "name": "djs-cc",
-  "version": "0.8.5",
+  "version": "0.0.0-development",
   "description": "A Discord.js 'extension' that allows for easy creation of commands.",
   "main": "build/index.js",
   "typings": "build/index",
@@ -18,11 +18,12 @@
     "docs": "typedoc --out ./docs --exclude index",
     "test": "jest",
     "test:ci": "yarn test --ci",
-    "test:coverage": "jest --coverage"
+    "test:coverage": "jest --coverage",
+    "semantic-release": "semantic-release"
   },
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/matthewferderber/djs-cc.git"
+    "url": "https://github.com/matthewferderber/djs-cc.git"
   },
   "keywords": [
     "Bot",
@@ -42,8 +43,7 @@
     "discord.js": "^13.0.1"
   },
   "optionalDependencies": {
-    "mysql": "^2.18.1",
-    "sqlite3": "5.0.2"
+    "better-sqlite3": "^7.4.3"
   },
   "devDependencies": {
     "@types/jest": "^27.0.0",
@@ -56,6 +56,7 @@
     "jest": "^27.0.6",
     "prettier": "^2.3.2",
     "ts-jest": "^27.0.4",
-    "typescript": "^4.3.5"
+    "typescript": "^4.3.5",
+    "semantic-release": "^17.4.4"
   }
 }

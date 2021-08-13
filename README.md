@@ -1,7 +1,6 @@
 # djs-cc
 
 [![npm Version](https://img.shields.io/npm/v/djs-cc.svg)](https://www.npmjs.com/package/djs-cc)
-[![Build Status](https://travis-ci.org/matthewferderber/djs-cc.svg?branch=master)](https://travis-ci.org/matthewferderber/djs-cc)
 [![Test Coverage](https://codeclimate.com/github/matthewferderber/djs-cc/badges/coverage.svg)](https://codeclimate.com/github/matthewferderber/djs-cc)
 
 **djs-cc (discord.js-commandclient)** is a typescript library for discord.js that adds simple command creation and configuration storing capabilities.
@@ -24,6 +23,7 @@ The idea for this project came after using many different command frameworks and
 ### Planned Features
 
 - Reaction based command features
+- Slash based command support
 - Updating command status messages (Ex: Progress bar)
 - Base commands (help, restart, status, config, alias)
 - Auto-deleting bot replies (Ex: help message dissapears after two minutes)
@@ -32,10 +32,7 @@ The idea for this project came after using many different command frameworks and
 ## Sample usage
 
 ```javascript
-const CommandClient = require("djs-cc");
-const Command = CommandClient.Command;
-const Argument = CommandClient.Argument;
-const ArgumentType = CommandClient.ArgumentType;
+const { Client, Command, Argument, ArgumentType } = require("djs-cc");
 
 class SampleCommand extends Command {
   constructor() {
@@ -60,13 +57,13 @@ class SampleCommand extends Command {
     return msg.author.username.includes("Cobalt");
   }
 }
-const bot = new CommandClient.Client();
+const bot = new Client(["Intents_Here"]);
 bot.registerCommand(new SampleCommand());
 bot.login(process.env.DISCORD_BOT_TOKEN);
 ```
 
 ## Requirements
 
-- Node.js version `7.0.0` (with `--harmony` flag for `async`) or `>7.6.0`
-- discord.js
+- Node.js version `>v16.0.0`
+- discord.js `>v13.0.0`
 - sqlite3, mysql, or pg (If you plan on storing data)

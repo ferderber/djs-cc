@@ -82,8 +82,8 @@ describe("Client", () => {
     await bot.onMessage(fakeMsg);
   });
 
-  test("registerProvider registers to settings property", () => {
-    bot.registerProvider(config);
+  test("registerProvider registers to settings property", async () => {
+    await bot.registerProvider(config);
     expect(bot.settings).toBeInstanceOf(SQLProvider);
   });
 

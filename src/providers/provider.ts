@@ -12,9 +12,10 @@ export default abstract class Provider {
     this.db = connection;
   }
 
+
   static async setup(config: Config): Promise<Connection> {
     return await createConnection({
-      type: "sqlite",
+      type: config.provider,
       database: config.db_name + ".db",
       synchronize: true,
       logging: true,

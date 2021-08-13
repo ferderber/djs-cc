@@ -1,4 +1,4 @@
-import * as fs from "fs";
+import { promises as fs } from 'fs';
 import * as path from "path";
 import { Command } from "./command";
 const padCache = [
@@ -43,24 +43,21 @@ function loadCommands(files: string[]): Command[] {
   return cmds;
 }
 async function findCommands(p: string): Promise<string[]> {
-  return new Promise<string[]>((resolve, reject) => {
-    fs.lstat(p, (err, stats) => {
-      if (!err && stats.isDirectory()) {
-        fs.readdir(p, (err, files) => {
-          if (err) {
-            reject(err);
-          }
-          const paths = [];
-          for (let i = 0; i < files.length; i++) {
-            paths.push(path.join(p, files[i]));
-          }
-          resolve(paths);
-        });
-      } else {
-        reject(err);
+    const paths: string[] = [];
+    try { 
+      // if access fails, return empty array
+      await fs.access(p)
+     }
+    catch (err) { return paths; }
+    const stats = await fs.lstat(p);
+    if (stats.isDirectory()) {
+      const files = await fs.readdir(p);
+      for (let i = 0; i < files.length; i++) {
+        paths.push(path.join(p, files[i]));
       }
-    });
-  });
+    }
+    console.log(paths);
+    return paths;
 }
 
 export function rightPad(str: string, len: number, ch = " "): string {

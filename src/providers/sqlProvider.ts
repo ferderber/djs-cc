@@ -1,6 +1,7 @@
 import "reflect-metadata";
 import Provider from "./provider";
 import { Guild, Setting } from "./models";
+
 export default class SQLProvider extends Provider {
   /**
    * Retrieves the settings value of a property
