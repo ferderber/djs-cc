@@ -12,7 +12,6 @@ export default abstract class Provider {
     this.db = connection;
   }
 
-
   static async setup(config: Config): Promise<Connection> {
     return await createConnection({
       type: config.provider,

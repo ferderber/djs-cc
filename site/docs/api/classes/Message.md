@@ -33,7 +33,7 @@ DiscordMessage.constructor
 
 #### Defined in
 
-[src/message.ts:10](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/message.ts#L10)
+[src/message.ts:10](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/message.ts#L10)
 
 ## Properties
 
@@ -145,7 +145,7 @@ DiscordMessage.client
 
 #### Defined in
 
-[src/message.ts:9](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/message.ts#L9)
+[src/message.ts:9](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/message.ts#L9)
 
 ___
 

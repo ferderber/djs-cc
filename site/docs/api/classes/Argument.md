@@ -20,7 +20,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/argument.ts:14](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/argument.ts#L14)
+[src/argument.ts:14](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/argument.ts#L14)
 
 ## Properties
 
@@ -30,7 +30,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/argument.ts:13](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/argument.ts#L13)
+[src/argument.ts:13](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/argument.ts#L13)
 
 ___
 
@@ -40,7 +40,7 @@ ___
 
 #### Defined in
 
-[src/argument.ts:10](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/argument.ts#L10)
+[src/argument.ts:10](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/argument.ts#L10)
 
 ___
 
@@ -50,7 +50,7 @@ ___
 
 #### Defined in
 
-[src/argument.ts:12](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/argument.ts#L12)
+[src/argument.ts:12](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/argument.ts#L12)
 
 ___
 
@@ -60,7 +60,7 @@ ___
 
 #### Defined in
 
-[src/argument.ts:11](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/argument.ts#L11)
+[src/argument.ts:11](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/argument.ts#L11)
 
 ## Methods
 
@@ -82,7 +82,7 @@ Gets the user Id from a mention string
 
 #### Defined in
 
-[src/argument.ts:32](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/argument.ts#L32)
+[src/argument.ts:32](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/argument.ts#L32)
 
 ___
 
@@ -104,7 +104,7 @@ Checks if a the argument is a number
 
 #### Defined in
 
-[src/argument.ts:24](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/argument.ts#L24)
+[src/argument.ts:24](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/argument.ts#L24)
 
 ___
 
@@ -127,4 +127,4 @@ Retrieves argument value from current argument string
 
 #### Defined in
 
-[src/argument.ts:46](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/argument.ts#L46)
+[src/argument.ts:46](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/argument.ts#L46)

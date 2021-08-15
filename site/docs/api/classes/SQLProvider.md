@@ -30,7 +30,7 @@ Provider.constructor
 
 #### Defined in
 
-[src/providers/provider.ts:11](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/providers/provider.ts#L11)
+[src/providers/provider.ts:11](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/providers/provider.ts#L11)
 
 ## Properties
 
@@ -44,7 +44,7 @@ Provider.db
 
 #### Defined in
 
-[src/providers/provider.ts:9](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/providers/provider.ts#L9)
+[src/providers/provider.ts:9](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/providers/provider.ts#L9)
 
 ## Methods
 
@@ -71,7 +71,7 @@ Provider.delete
 
 #### Defined in
 
-[src/providers/sqlProvider.ts:44](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/providers/sqlProvider.ts#L44)
+[src/providers/sqlProvider.ts:44](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/providers/sqlProvider.ts#L44)
 
 ___
 
@@ -97,7 +97,7 @@ Provider.deleteAll
 
 #### Defined in
 
-[src/providers/sqlProvider.ts:60](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/providers/sqlProvider.ts#L60)
+[src/providers/sqlProvider.ts:60](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/providers/sqlProvider.ts#L60)
 
 ___
 
@@ -124,7 +124,7 @@ Provider.get
 
 #### Defined in
 
-[src/providers/sqlProvider.ts:11](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/providers/sqlProvider.ts#L11)
+[src/providers/sqlProvider.ts:11](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/providers/sqlProvider.ts#L11)
 
 ___
 
@@ -150,7 +150,7 @@ Provider.getAll
 
 #### Defined in
 
-[src/providers/sqlProvider.ts:28](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/providers/sqlProvider.ts#L28)
+[src/providers/sqlProvider.ts:28](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/providers/sqlProvider.ts#L28)
 
 ___
 
@@ -178,7 +178,7 @@ Provider.set
 
 #### Defined in
 
-[src/providers/sqlProvider.ts:76](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/providers/sqlProvider.ts#L76)
+[src/providers/sqlProvider.ts:76](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/providers/sqlProvider.ts#L76)
 
 ___
 
@@ -202,4 +202,4 @@ Provider.setup
 
 #### Defined in
 
-[src/providers/provider.ts:16](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/providers/provider.ts#L16)
+[src/providers/provider.ts:15](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/providers/provider.ts#L15)

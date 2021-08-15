@@ -30,7 +30,7 @@ DiscordClient.constructor
 
 #### Defined in
 
-[src/client.ts:20](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/client.ts#L20)
+[src/client.ts:20](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/client.ts#L20)
 
 ## Properties
 
@@ -68,7 +68,7 @@ ___
 
 #### Defined in
 
-[src/client.ts:17](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/client.ts#L17)
+[src/client.ts:17](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/client.ts#L17)
 
 ___
 
@@ -120,7 +120,7 @@ ___
 
 #### Defined in
 
-[src/client.ts:18](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/client.ts#L18)
+[src/client.ts:18](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/client.ts#L18)
 
 ___
 
@@ -158,7 +158,7 @@ ___
 
 #### Defined in
 
-[src/client.ts:19](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/client.ts#L19)
+[src/client.ts:19](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/client.ts#L19)
 
 ___
 
@@ -933,7 +933,7 @@ ___
 
 #### Defined in
 
-[src/client.ts:32](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/client.ts#L32)
+[src/client.ts:32](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/client.ts#L32)
 
 ___
 
@@ -953,7 +953,7 @@ ___
 
 #### Defined in
 
-[src/client.ts:40](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/client.ts#L40)
+[src/client.ts:40](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/client.ts#L40)
 
 ___
 
@@ -1164,7 +1164,7 @@ Registers a command.
 
 #### Defined in
 
-[src/client.ts:87](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/client.ts#L87)
+[src/client.ts:87](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/client.ts#L87)
 
 ___
 
@@ -1186,7 +1186,7 @@ Registers all commands within the given directory
 
 #### Defined in
 
-[src/client.ts:110](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/client.ts#L110)
+[src/client.ts:110](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/client.ts#L110)
 
 ___
 
@@ -1208,7 +1208,7 @@ Registers an array of command classes as commands.
 
 #### Defined in
 
-[src/client.ts:100](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/client.ts#L100)
+[src/client.ts:100](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/client.ts#L100)
 
 ___
 
@@ -1230,7 +1230,7 @@ Sets the clients configuration provider
 
 #### Defined in
 
-[src/client.ts:131](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/client.ts#L131)
+[src/client.ts:131](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/client.ts#L131)
 
 ___
 
@@ -1487,7 +1487,7 @@ Removes a command from the bots command Map
 
 #### Defined in
 
-[src/client.ts:124](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/client.ts#L124)
+[src/client.ts:124](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/client.ts#L124)
 
 ___
 

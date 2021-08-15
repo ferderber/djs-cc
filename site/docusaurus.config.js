@@ -5,7 +5,7 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 module.exports = {
   title: 'djs-cc',
   tagline: 'A simple Discord.js command client',
-  url: 'matthewferderber.github.io',
+  url: 'https://matthewferderber.github.io',
   baseUrl: '/djs-cc/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -37,7 +37,7 @@ module.exports = {
           items: [
             {
               label: 'API Docs',
-              to: '/docs/api',
+              to: '/api',
             },
           ],
         },

@@ -20,7 +20,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/command.ts:14](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/command.ts#L14)
+[src/command.ts:14](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/command.ts#L14)
 
 ## Properties
 
@@ -30,7 +30,7 @@ custom_edit_url: null
 
 #### Defined in
 
-[src/command.ts:9](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/command.ts#L9)
+[src/command.ts:9](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/command.ts#L9)
 
 ___
 
@@ -40,7 +40,7 @@ ___
 
 #### Defined in
 
-[src/command.ts:11](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/command.ts#L11)
+[src/command.ts:11](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/command.ts#L11)
 
 ___
 
@@ -50,7 +50,7 @@ ___
 
 #### Defined in
 
-[src/command.ts:12](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/command.ts#L12)
+[src/command.ts:12](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/command.ts#L12)
 
 ___
 
@@ -60,7 +60,7 @@ ___
 
 #### Defined in
 
-[src/command.ts:8](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/command.ts#L8)
+[src/command.ts:8](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/command.ts#L8)
 
 ___
 
@@ -70,7 +70,7 @@ ___
 
 #### Defined in
 
-[src/command.ts:13](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/command.ts#L13)
+[src/command.ts:13](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/command.ts#L13)
 
 ___
 
@@ -80,7 +80,7 @@ ___
 
 #### Defined in
 
-[src/command.ts:10](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/command.ts#L10)
+[src/command.ts:10](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/command.ts#L10)
 
 ## Methods
 
@@ -102,7 +102,7 @@ Whether the user who wrote the message has permission (default: true)
 
 #### Defined in
 
-[src/command.ts:110](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/command.ts#L110)
+[src/command.ts:110](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/command.ts#L110)
 
 ___
 
@@ -122,7 +122,7 @@ ___
 
 #### Defined in
 
-[src/command.ts:76](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/command.ts#L76)
+[src/command.ts:76](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/command.ts#L76)
 
 ___
 
@@ -146,7 +146,7 @@ Map of the found arguments
 
 #### Defined in
 
-[src/command.ts:26](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/command.ts#L26)
+[src/command.ts:26](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/command.ts#L26)
 
 ___
 
@@ -169,4 +169,4 @@ Main function run when a command is executed
 
 #### Defined in
 
-[src/command.ts:118](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/command.ts#L118)
+[src/command.ts:118](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/command.ts#L118)

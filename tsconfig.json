@@ -21,5 +21,6 @@
     "lib": ["es2017"],
     "paths": {}
   },
-  "include": ["./src/**/*.ts"]
+  "include": ["./src/**/*.ts"],
+  "exclude": ["site/*"]
 }

@@ -16,7 +16,7 @@ Arguments can be parsed into any of the ArgumentType types.
 
 #### Defined in
 
-[src/argumentType.ts:7](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/argumentType.ts#L7)
+[src/argumentType.ts:7](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/argumentType.ts#L7)
 
 ___
 
@@ -26,7 +26,7 @@ ___
 
 #### Defined in
 
-[src/argumentType.ts:6](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/argumentType.ts#L6)
+[src/argumentType.ts:6](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/argumentType.ts#L6)
 
 ___
 
@@ -36,7 +36,7 @@ ___
 
 #### Defined in
 
-[src/argumentType.ts:8](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/argumentType.ts#L8)
+[src/argumentType.ts:8](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/argumentType.ts#L8)
 
 ___
 
@@ -46,4 +46,4 @@ ___
 
 #### Defined in
 
-[src/argumentType.ts:5](https://github.com/matthewferderber/djs-cc/blob/672a2a0/src/argumentType.ts#L5)
+[src/argumentType.ts:5](https://github.com/matthewferderber/djs-cc/blob/b08c79c/src/argumentType.ts#L5)
