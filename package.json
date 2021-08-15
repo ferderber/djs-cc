@@ -6,7 +6,8 @@
   "typings": "build/index",
   "types": "build/index.d.ts",
   "files": [
-    "src"
+    "src",
+    "build"
   ],
   "scripts": {
     "start": "yarn build && node index.js",
