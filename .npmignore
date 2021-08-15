@@ -2,7 +2,6 @@
 node_modules/
 .vscode
 .settings/
-tslint.json
 yarn-error.log
 coverage
 *.db
