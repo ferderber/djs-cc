@@ -54,7 +54,7 @@ async function findCommands(p: string): Promise<string[]> {
   if (stats.isDirectory()) {
     const files = await fs.readdir(p);
     for (let i = 0; i < files.length; i++) {
-      if (path.extname(files[i]) === '.js' ) {
+      if (path.extname(files[i]) === ".js") {
         paths.push(path.join(p, files[i]));
       }
     }
