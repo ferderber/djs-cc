@@ -33,7 +33,7 @@ function loadCommands(files: string[]): Command[] {
         }
         const obj = <Command>new _obj();
         if (obj instanceof Command) {
-          cmds.push(<Command>_obj);
+          cmds.push(<Command>obj);
         }
       } catch (err) {
         console.error(err);
@@ -54,7 +54,9 @@ async function findCommands(p: string): Promise<string[]> {
   if (stats.isDirectory()) {
     const files = await fs.readdir(p);
     for (let i = 0; i < files.length; i++) {
-      paths.push(path.join(p, files[i]));
+      if (path.extname(files[i]) === '.js' ) {
+        paths.push(path.join(p, files[i]));
+      }
     }
   }
   console.log(paths);

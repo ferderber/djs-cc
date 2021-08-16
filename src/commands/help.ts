@@ -24,7 +24,7 @@ export default class HelpCommand extends Command {
           `${cmd.name}:\u2001(${msg.client.prefix}${
             cmd.usage ? cmd.usage : cmd.name
           })`,
-          cmd.description || ""
+          cmd.description || "No Description"
         );
         parsedCommands.push(cmd);
       }
